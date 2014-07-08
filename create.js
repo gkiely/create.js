@@ -1,4 +1,4 @@
-// todo
+// Todo...
 // clean up, make functions modular & nice, comment, maybe start from scratch and do a rewrite
 // add code for init, should make an array, and call each of those
 // create lotr themed example
@@ -6,9 +6,8 @@
 // best practice: defaults, req & init, this || dom, public , pure
 
 
-
 var create = (function(){
-	// main add props method
+
 	function addProps(child, o){
 		for(var i in o){
 			child[i] = o[i];
@@ -27,6 +26,7 @@ var create = (function(){
 			} 
 		}
 	}
+
 	// checks requirement objects
 	function checkReq(obj, req, parent){
 		var err = [], typeStr,
@@ -67,9 +67,11 @@ var create = (function(){
 		}
 		return obj;
 	}
-	
+
+	// =============================
 	// Public wrapper for createClass
 	// Prevents init from calling for classes & takes function as 2nd arg
+	// =============================
 	window.createClass = function createClass(parent, func){
 		var name = parent.name, obj;
 		if(typeof parent === "function"){
@@ -79,7 +81,8 @@ var create = (function(){
 			}
 			return parent;
 		}
-		// dev can pass function or just plain object, preferably function
+
+		// dev passes function as second param
 		if(typeof func === "function"){
 			name = func.name;
 			obj = func() || {};
@@ -90,7 +93,9 @@ var create = (function(){
 		else throw new Error('createClass() requires function as 2nd argument');
 	};
 
+	// ====================
 	// main create function
+	// ====================
 	return function create(parent, obj, init){
 		var child = Object.create(parent),
 				req = parent.req;
