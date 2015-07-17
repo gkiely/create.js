@@ -2,45 +2,39 @@
 //@authors: Grant Kiely
 
 var ProgressBar = createClass(function(){
-    /////////
-    // Public: Anything inside this object is public
-    // _ to indicate private
-    ////////
+    // Public
+    // prefix property with _ to indicate private
+    //-----------------------
     return {
-        //=== Defaults ===//
-        // Can be overwritten w/ optional 2nd {} argument in create()
-        $ct: [],
-        $imgs: [],
-        click:function(){}, 
-        length: 3,
+        
+        // Defaults
+        //-----------------------
         active: 1,
 
-        //==== Required params ====
-        //==== gets evaluated by by checkReq in create()
-        req: {$ct:[], $imgs: []},
+        
+        // Required params (type checked)
+        //-----------------------
+        req: {
+          $container:[]
+        },
 
-        //==== Runs on object creation ====
-        //==== gets called by create() on all all instances
+        // Init function
+        //-----------------------
         init: function(){
             var _this = this;
-            // Runtime constructors
             this.length = this.$imgs.length;
             
             // Init code
             if(this.length){
                 var str = this.buildDots();
-                // this._attachEventHandlers()
             }
             this.$ct.children('.pdot').click(function(e){
                 _this.click(e);
             })
         },
 
-        //=====================
-        // Dom & object methods 
-        // Anything that works with the dom or modifies/needs access to this should go here.
-        // These guys are on the prototype.
-        //=====================
+        // Dom & prototype methods go here
+        //----------------------------------
         buildDots: function(l, active){
             var str = _makeDots(l || this.length, active || this.active);
             this._appendDots(str);
@@ -74,11 +68,8 @@ var ProgressBar = createClass(function(){
         }
     }
 
-    //====================
-    // Module util methods
-    // They don't access the dom or this, they have a defined return value.
-    // Cached and fast
-    //====================
+    // Private methods go here
+    //---------------------------
     function _makeDots(num, active){
         var str="";
         for(var i = 0; i < num; i++) {
@@ -95,22 +86,11 @@ var ProgressBar = createClass(function(){
 
 
 
-
-
-
-// =======================
-// Initialise progress bar
-// =======================
-
+// Create progressbar
 var progress = create(ProgressBar, {
-    $ct: $('.progress-ct'),
-    $banner: $('.case-wrapper'),
-    $imgs: $swipe_slides,
+    $container: $('.progress-ct'),
+    length: 6,
     click: function(e){
-       var i = this.scrollTo(e);
-        if(i){
-            banner.update(i);
-            swipe.scrollProgress(i, 500);
-        }
+      this.scrollTo(e); 
     }
 });
