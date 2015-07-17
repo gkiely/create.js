@@ -1,4 +1,4 @@
-//@details: Progress bar element for touch-swipe js
+//@details: Progress bar element
 //@authors: Grant Kiely
 
 var ProgressBar = createClass(function(){
