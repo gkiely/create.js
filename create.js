@@ -2,14 +2,12 @@
 // Name: Create JS
 // Details: a small library that extracts the menial tasks out of OO programming in JavaScript 
 // and also adds some extra functionality that you would have to hand-roll with new/Object.create/es6 classes.
-// Version: 0.9
+// Version: 0.91
 // Author: Grant Kiely
 // =====================
 
 // Todo...
-// Create inheritance for all createClass methods, if you create a method that also has a parent method of the same name
-// it will get converted to an array and both will get called by default.
-// clean up, make functions modular & nice, comment, maybe start from scratch and do a rewrite
+// Create inheritance for all createClass methods, if you create a method that also has a parent method of the same name it will get converted to an array and both will get called by default.
 
 var create = (function(){
 
