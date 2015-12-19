@@ -68,7 +68,7 @@ var ProgressBar = createClass(function(){
         }
     }
 
-    // Private methods go here
+    // Pure/private methods go here
     //---------------------------
     function _makeDots(num, active){
         var str="";
